@@ -1,20 +1,28 @@
 # Creating Customer Segments
 
-Unsupervised Learning Project
+## Project Description:
 
-## Template code
+- A wholesale grocery distributor wants determine which changes will benefit their business. They recently tested out a change to their delivery method, from a regular morning delivery to a cheaper, bulk evening delivery. Initial tests didn’t discover any significant effect, so they implemented the cheaper option. Almost immediately, they began getting complaints about the change and losing customers. As it turns out, the highest volume customers had an easy time adapting to the change, whereas smaller family run shops had serious issues with it, but these issues were washed out statistically by noise from the larger customers.
 
-In this directory (`customer_segments/`), run `ipython notebook`, open `customer_segments.ipynb` and follow the instructions.
+For the future, they want to have a sense of what sorts of different customers they have. Then, when implementing changes, they can look at the effects on these different groups independently. The objective is to use unsupervised learning techniques to see what sort of patterns exist among existing customers, and what exactly makes them different.
 
-Note: You need Python 2.7, NumPy, pandas, matplotlib and scikit-learn to work on this notebook.
+## Source Code
+
+In this directory (`customer_segments/`), run `ipython notebook`, open `customer_segments.ipynb`.
+
+## Software & Libraries:
+
+ - Python 2.7
+ - NumPy
+ - pandas
+ - matplotlib
+ - scikit-learn
 
 ## Dataset
 
-The dataset refers to clients of a wholesale distributor. It includes the annual spending in monetary units (m.u.) on diverse product categories.
+The dataset refers to clients of a wholesale distributor. It includes the annual spending in monetary units (m.u.) on diverse product categories. It is part of a larger database published with the following paper:
 
-It is part of a larger database published with the following paper:
-
-Abreu, N. (2011). Analise do perfil do cliente Recheio e desenvolvimento de um sistema promocional. Mestrado em Marketing, ISCTE-IUL, Lisbon.
+`Abreu, N. (2011). Analise do perfil do cliente Recheio e desenvolvimento de um sistema promocional. Mestrado em Marketing, ISCTE-IUL, Lisbon.`
 
 ## Attributes
 
