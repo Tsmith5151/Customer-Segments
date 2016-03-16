@@ -46,11 +46,11 @@ The eigenvector with the highest eigenvalue is therefore the principal component
 |   4    | 0.044023  | 
 |   5    | 0.015022  |
 
-![](PCA_Plot.png)
+
 
 PCA - Cumulative Variance  | PCA - Variance Ratio       |
 :-------------------------:|:-------------------------: | 
-![](PCA_Plot.png)          | ![](learning_curve_4.png)  | 
+![](PCA_Plot.png)          | ![](PCA_Plot2.png)  | 
 
 #### Question 3: What do the dimensions seem to represent? How can you use this information?
 
