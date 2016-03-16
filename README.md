@@ -24,6 +24,37 @@
 
 `Abreu, N. (2011). Analise do perfil do cliente Recheio e desenvolvimento de um sistema promocional. Mestrado em Marketing, ISCTE-IUL, Lisbon.`
 
+## Questions:
+
+####Question 1: In this section you will be using PCA and ICA to start to understand the structure of the data. Before doing any computations, what do you think will show up in your computations? List one or two ideas for what might show up as the first PCA dimensions, or what type of vectors will show up as ICA dimensions.
+
+
+#### Question 2: How quickly does the variance drop off by dimension? If you were to use PCA on this dataset, how many dimensions would you choose for your analysis? Why?
+
+
+#### Question 3: What do the dimensions seem to represent? How can you use this information?
+
+
+#### Question 4: For each vector in the ICA decomposition, write a sentence or two explaining what sort of object or property it corresponds to. What could these components be used for?
+
+
+#### Question 5: What are the advantages of using K Means clustering or Gaussian Mixture Models?
+
+
+
+#### Question 6:  What are the central objects in each cluster? Describe them as customers.
+
+###Conclusions
+
+#### Question 7:  Which of these techniques did you feel gave you the most insight into the data?
+
+
+#### Question 8: How would you use that technique to help the company design new experiments?
+
+
+#### Question 9: How would you use that data to help you predict future customer needs?
+
+
 ## Attributes
 
 - Fresh: annual spending (m.u.) on fresh products (Continuous)
