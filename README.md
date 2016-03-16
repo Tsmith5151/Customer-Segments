@@ -30,9 +30,27 @@
 
 ####Question 1: In this section you will be using PCA and ICA to start to understand the structure of the data. Before doing any computations, what do you think will show up in your computations? List one or two ideas for what might show up as the first PCA dimensions, or what type of vectors will show up as ICA dimensions.
 
+- [`Principal Component Analysis`](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) is a statistical technique that is utilized to emphasize variation in the attributes and identifies patterns in the dataset. This is a systematized method to tranform input feature into principal components and use the PC's as "new features" for either regression or classification. The principal components are the underlying structure of the data and the are defined by the directions that maximizes the variance (the direction where the data is most spread out); this minimizes the information loss when projecting onto the new axis.
+The eigenvector with the highest eigenvalue is therefore the principal component. The first step consists of placing the first axis in the direction of greatest variance of the points to maximize the variance along the corresponding axis. The second axis is orthogonal to it. In higer dimensions (greater than 2) the second axis could lie anywhere in the plane perpendicular to the first axis. As a constraint, the second axis always perpendicular to the first axis to maximizes the variance along the axis. The third axis would be orthogonal to the second and so forth for higher dimensions (number of dimensions equals the total number of attributes or instances of x). Calculate the covariance matrix of the original coordinates of the points and diagonalize it to find the eigenvectors. These are the axes of the transformed space, sorted in order of eigenvalue—because each eigenvalue gives the variance along its axis.
+
 
 #### Question 2: How quickly does the variance drop off by dimension? If you were to use PCA on this dataset, how many dimensions would you choose for your analysis? Why?
 
+- The table gives the variance along each new coordinate axis in the order in which the PC axes were chosen. Because the sum of the variances is constant regardless of the coordinate system, they are expressed as percentages of that total. We call axes components and say that each one “accounts for” its share of the variance. The figure below shows the result of transforming the dataset with 5 numeric attributes, corresponding to data points in a high dimensional space (D=5). The plot shows the variance vs the component (n=5). You can use all the components as new attributes for data mining, or you might want to choose just the first few, the principal components and discard the rest. The results show that the first two principal components account for 86.4% of the variance, and the first three components account for 93.4%. A common practice is picking the first m eigenvectors that account for 90-95% of the total variance. It is worth noting that before implementing PCA, the scale of the attributes can grealty affect the results from principal components analysis, therefore a common practice is to standardize all attributes to zero mean and unit variance. In this dataset, all of the dimensions of the wholesale grocery data are in the same units monetary units (m.u.), thus scaling would not apply in this case. 
+
+|   PC   |  Variance |
+| ------ | --------- |
+|   1    | 0.459614  |
+|   2    | 0.405172  | 
+|   3    | 0.070030  |
+|   4    | 0.044023  | 
+|   5    | 0.015022  |
+
+![](PCA_Plot.png)
+
+PCA - Cumulative Variance  | PCA - Variance Ratio       |
+:-------------------------:|:-------------------------: | 
+![](PCA_Plot.png)          | ![](learning_curve_4.png)  | 
 
 #### Question 3: What do the dimensions seem to represent? How can you use this information?
 
