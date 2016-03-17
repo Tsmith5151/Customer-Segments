@@ -1,6 +1,6 @@
 # Creating Customer Segments
 
-### Project in progress (3/16/16)
+### Project in progress (3/17/16)
 
 ## Project Description:
 
@@ -35,21 +35,17 @@
 
 - Calculate the covariance matrix of the original coordinates of the points and diagonalize it to find the eigenvectors. These are the axes of the transformed space, sorted in order of eigenvalue—because each eigenvalue gives the variance along its axis.
 
-PCA                        | 
-:-------------------------:|
-![](PCA_Visual.png)        | 
-
 ## Questions:
 
 ####Question 1: Before doing any computations, what do you think will show up in your computations? List one or two ideas for what might show up as the first PCA dimensions, or what type of vectors will show up as ICA dimensions.
 
-- The original dataset is plotted in a high dimensional space (D=5) and is represented in terms of Fresh, Milk, Grocery, etc; transforming the data into the new dimensions which is represented now by the PC's. The first PC accounts or the highest portion of the total variance or "spread" of the data. The following PC's account for the remaining variability, and usually the first couple of PC's account for roughly 90-95% of the variance. Before running any PCA, just a quick scan over the histograms (shown below), there seems to be a correlation in the number of orders among `Fresh`, `Milk`, and `Grocery`. Intuitively, the histograms show an exponential decline in the number of orders for the respected products, hence this could represent a cluster of the larger companies. In contrast to the remaining products, the histogram virtually drops off after the first two bins (lower number of orders) and perhaps indicate the smaller company purchases from the wholesale grocery distributor.
+- The original dataset is plotted in a high dimensional space (D=5) and is represented in terms of Fresh, Milk, Grocery, etc; transforming the data into the new dimensions which is represented now by the PC's. The first PC accounts or the highest portion of the total variance or "spread" of the data. The following PC's account for the remaining variability, and usually the first couple of PC's account for roughly 90-95% of the variance. We would expect the first several PCs to be composed of original attributes that are in some way correlated with each other. These principal components could represent the customers that purchase certain items or a combination of the items. Additionally, before running any PCA, plotting the histograms (shown below) seems to indicate a correlation in the number of orders among `Fresh`, `Milk`, and `Grocery`. Intuitively, the histograms show an exponential decline in the number of orders for the respected products, hence this could represent a cluster of the larger companies. In contrast to the remaining products, the histogram virtually drops off after the first two bins (lower number of orders) and perhaps indicate the smaller company purchases from the wholesale grocery distributor. Altern
 
 ![](Data.Histograms.png)  
 
 #### Question 2: How quickly does the variance drop off by dimension? If you were to use PCA on this dataset, how many dimensions would you choose for your analysis? Why?
 
-- The figure below shows the result of transforming the dataset with 5 numeric attributes, corresponding to data points in a high dimensional space (D=5). The plot shows the variance vs the component (n=5). You can use all the components as new attributes for data mining, or you might want to choose just the first few, the principal components and discard the rest. The results show that the first two principal components account for 86.4% of the variance, and the first three components account for 93.4%. Based on the No. Principal Components vs Cumulative Explained Variance Ratio plot (left), the number of dimensions would be reduced to `3`, which explains 93.4% of the variance. In regards to how quickly does the variance drop off, the slope shows that at PC 1-2, the slope is `-0.054` and the slope at PC 2-3 is `-0.335` (figure on right). The slope at PC 3-4 the slope begins to level out some with a slope of `-0.026`; therefore between PC 2-3 you observe the steepest slope where the explained variance ratio begins to quickly decline. 
+- The figure below shows the result of transforming the dataset with 5 numeric attributes, corresponding to data points in a high dimensional space (D=5). The plot shows the variance vs the component (n=5). Based on the No. Principal Components vs Cumulative Explained Variance Ratio plot (left), the number of dimensions would be reduced to `2`, which explains 86.4% of the variance. In this plot, the ['Explained Variance Ratio`](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) is a fraction of the total variance explained by each of the selected components. In regards to how quickly does the variance drop off, the slope shows that at PC 1-2, the slope is `-0.054` and the slope at PC 2-3 is `-0.335` (figure on right). The slope at PC 3-4 the slope begins to level out some with a slope of `-0.026`; therefore between PC 2-3 you observe the steepest slope where the explained variance ratio begins to quickly decline. 
  
 - As a note, for PCA to be implemented correctly, you need to address the event where features are on different scale or different magnitudes of range, and thus causing the results of PCA to be biased in the direction of the features with large range. One approach to scaling the data is using [`StandardScaler`](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html); the features are standardized by removing the mean (centered at zero) and scaling to unit variance. However, it may not always be the case in which the data should be standardized. In some instances you may want to preserve the variance of each dimension as opposed to scaling to unit length, which could remove the potential dependence between features since each feature is scaled independently. The feartures were not standardized for this dataset as the attributes have the same units monetary units (m.u.) and in essence, we are trying to capture the variance in spending among the customers.
 
@@ -67,6 +63,7 @@ PCA - Cumulative Variance  | PCA - Variance Ratio       |
 
 
 #### Question 3: What do the dimensions seem to represent? How can you use this information?
+
 
 
 #### Question 4: For each vector in the ICA decomposition, write a sentence or two explaining what sort of object or property it corresponds to. What could these components be used for?
