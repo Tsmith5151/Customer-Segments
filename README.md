@@ -49,18 +49,9 @@ PCA                        |
 
 #### Question 2: How quickly does the variance drop off by dimension? If you were to use PCA on this dataset, how many dimensions would you choose for your analysis? Why?
 
-- The figure below shows the result of transforming the dataset with 5 numeric attributes, corresponding to data points in a high dimensional space (D=5). The plot shows the variance vs the component (n=5). You can use all the components as new attributes for data mining, or you might want to choose just the first few, the principal components and discard the rest. The results show that the first two principal components account for 86.4% of the variance, and the first three components account for 93.4%. therefore a common practice is to standardize all attributes to zero mean and unit variance. In this dataset, all of the dimensions of the wholesale grocery data are in the same units monetary units (m.u.), thus scaling would not apply in this case. For PCA to be implemented correctly, you need to addresses the event where features are on different magnitudes of range or not normally distributed, thus it can cause the results of PCA to be biased in the direction of the features with large range. Using [`StandardScaler`](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html), the features are standardized by removing the mean and scaling to unit variance.
-
-```python
-#Standardize features by removing the mean and scaling to unit variance
-from sklearn.preprocessing import StandardScaler
-
-columns = data.columns
-sc = StandardScaler()
-df_sc = sc.fit_transform(data)
-df_scale = pd.DataFrame(df_sc, columns=columns)
-```
-- Based on the No. Principal Components vs Cumulative Explained Variance Ratio plot (left), the number of dimensions would be reduced to `3`, which explains 93.4% of the variance. In regards to how quickly does the variance drop off, the slope shows that at PC 1-2, the slope is `-0.054` and the slope at PC 2-3 is `-0.335` (figure on right). The slope at PC 3-4 the slope begins to level out some with a slope of `-0.026`; therefore between PC 2-3 you observe the steepest slope where the explained variance ratio begins to quickly decline. 
+- The figure below shows the result of transforming the dataset with 5 numeric attributes, corresponding to data points in a high dimensional space (D=5). The plot shows the variance vs the component (n=5). You can use all the components as new attributes for data mining, or you might want to choose just the first few, the principal components and discard the rest. The results show that the first two principal components account for 86.4% of the variance, and the first three components account for 93.4%. Based on the No. Principal Components vs Cumulative Explained Variance Ratio plot (left), the number of dimensions would be reduced to `3`, which explains 93.4% of the variance. In regards to how quickly does the variance drop off, the slope shows that at PC 1-2, the slope is `-0.054` and the slope at PC 2-3 is `-0.335` (figure on right). The slope at PC 3-4 the slope begins to level out some with a slope of `-0.026`; therefore between PC 2-3 you observe the steepest slope where the explained variance ratio begins to quickly decline. 
+ 
+- As a note, for PCA to be implemented correctly, you need to address the event where features are on different scale or different magnitudes of range, and thus causing the results of PCA to be biased in the direction of the features with large range. One approach to scaling the data is using [`StandardScaler`](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html); the features are standardized by removing the mean (centered at zero) and scaling to unit variance. However, it may not always be the case in which the data should be standardized. In some instances you may want to preserve the variance of each dimension as opposed to scaling to unit length, which could remove the potential dependence between features since each feature is scaled independently. The feartures were not standardized for this dataset as the attributes have the same units monetary units (m.u.) and in essence, we are trying to capture the variance in spending among the customers.
 
 |   PC   |  Variance |  
 | ------ | --------- |    
