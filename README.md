@@ -30,9 +30,7 @@
 
 - [`Principal Component Analysis`](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) is a statistical technique that is utilized to emphasize variation in the attributes and identifies patterns in the dataset. This is a systematized method to tranform input feature into principal components and use the PC's as "new features" for either regression or classification. The principal components are the underlying structure of the data and the are defined by the directions that maximizes the variance (the direction where the data is most spread out); this minimizes the information loss when projecting onto the new axis.
 The eigenvector with the highest eigenvalue is therefore the principal component. The first step consists of placing the first axis in the direction of greatest variance of the points to maximize the variance along the corresponding axis. The second axis is orthogonal to it. In higher dimensions (greater than 2) the second axis could lie anywhere in the plane perpendicular to the first axis. As a constraint, the second axis always perpendicular to the first axis to maximizes the variance along the axis. The third axis would be orthogonal to the second and so forth for higher dimensions (number of dimensions equals the total number of attributes or instances of x). Calculate the covariance matrix of the original coordinates of the points and diagonalize it to find the eigenvectors. These are the axes of the transformed space, sorted in order of eigenvalue—because each eigenvalue gives the variance along its axis.
-- The table gives the variance along each new coordinate axis in the order in which the PC axes were chosen. Because the sum of the variances is constant regardless of the coordinate system, they are expressed as percentages of that total. We call axes components and say that each one “accounts for” its share of the variance. 
 
-![](Data.Histograms.png)  
 
 ## Questions:
 
@@ -40,13 +38,15 @@ The eigenvector with the highest eigenvalue is therefore the principal component
 
 - Principal component analysis transforms possibly correlated variables into a smaller number of uncorrelated variables which are referred to as principal components. The original dataset is plotted in a high dimensional space (D=5) and is represented in terms of Fresh, Milk, Grocery, etc; transforming the data into the new dimensions which is represented now by the PC's. The first PC accounts or the highest portion of the total variance or "spread" of the data. The following PC's account for the remaining variability, and usually the first couple of PC's account for roughly 90-95% of the variance. Before running any PCA, just a quick scan over the histograms (shown below), there seems to be a correlation in the number of orders among `Fresh`, `Milk`, and `Grocery`. Intuitively, the histograms show an exponential decline in the number of orders for the respected products, hence this could represent a cluster of the larger companies. In contrast to the remaining products, the histogram virtually drops off after the first two bins (lower number of orders) and perhaps indicate the smaller companies purchases from the wholesale grocery distributor.
 
+![](Data.Histograms.png)  
+
 #### Question 2: How quickly does the variance drop off by dimension? If you were to use PCA on this dataset, how many dimensions would you choose for your analysis? Why?
 
-- The figure below shows the result of transforming the dataset with 5 numeric attributes, corresponding to data points in a high dimensional space (D=5). The plot shows the variance vs the component (n=5). You can use all the components as new attributes for data mining, or you might want to choose just the first few, the principal components and discard the rest. The results show that the first two principal components account for 86.4% of the variance, and the first three components account for 93.4%. A common practice is picking the first m eigenvectors that account for 90-95% of the total variance. It is worth noting that before implementing PCA, the scale of the attributes can greatly affect the results from principal components analysis, therefore a common practice is to standardize all attributes to zero mean and unit variance. In this dataset, all of the dimensions of the wholesale grocery data are in the same units monetary units (m.u.), thus scaling would not apply in this case. 
+- The figure below shows the result of transforming the dataset with 5 numeric attributes, corresponding to data points in a high dimensional space (D=5). The plot shows the variance vs the component (n=5). You can use all the components as new attributes for data mining, or you might want to choose just the first few, the principal components and discard the rest. The results show that the first two principal components account for 86.4% of the variance, and the first three components account for 93.4%. A common practice is picking the first m eigenvectors that account for 90-95% of the total variance. It is worth noting that before implementing PCA, the scale of the attributes can greatly affect the results from principal components analysis, therefore a common practice is to standardize all attributes to zero mean and unit variance. In this dataset, all of the dimensions of the wholesale grocery data are in the same units monetary units (m.u.), thus scaling would not apply in this case. Based on the No. Principal Components vs Cumulative Explained Variance Ratio plot (left), the number of dimensions would be reduced to 3, which explains 93.4% of the variance. The plot on the right shows the greatest rate of change in the slope to be between 1-3 principal components. 
 
-|   PC   |  Variance |
-| ------ | --------- |
-|   1    | 0.459614  |
+|   PC   |  Variance |  
+| ------ | --------- |    
+|   1    | 0.459614  |       
 |   2    | 0.405172  | 
 |   3    | 0.070030  |
 |   4    | 0.044023  | 
