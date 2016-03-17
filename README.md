@@ -28,15 +28,22 @@
 
 ## Principal Component Analysis:
 
-- [`Principal Component Analysis`](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) is a statistical technique that is utilized to emphasize variation in the attributes and identifies patterns in the dataset. This is a systematized method to tranform input feature into principal components and use the PC's as "new features" for either regression or classification. The principal components are the underlying structure of the data and the are defined by the directions that maximizes the variance (the direction where the data is most spread out); this minimizes the information loss when projecting onto the new axis.
-The eigenvector with the highest eigenvalue is therefore the principal component. The first step consists of placing the first axis in the direction of greatest variance of the points to maximize the variance along the corresponding axis. The second axis is orthogonal to it. In higher dimensions (greater than 2) the second axis could lie anywhere in the plane perpendicular to the first axis. As a constraint, the second axis always perpendicular to the first axis to maximizes the variance along the axis. The third axis would be orthogonal to the second and so forth for higher dimensions (number of dimensions equals the total number of attributes or instances of x). Calculate the covariance matrix of the original coordinates of the points and diagonalize it to find the eigenvectors. These are the axes of the transformed space, sorted in order of eigenvalue—because each eigenvalue gives the variance along its axis.
+- [`Principal Component Analysis`](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) is an unsupervised linear transformation technique which transforms possibly correlated variables into a smaller number of uncorrelated variables which are referred to as the principal components. The objective of PCA is to identify patterns in data based on the correlation between features. PCA attempts to find the direction with the maximum variance in a high-dimensional dataset and then project it onto a new subspace with equal or fewer dimensions that the original one. 
 
+
+- The principal components are the underlying structure of the data and the are defined by the directions that maximizes the variance (the direction where the data is most spread out); this minimizes the information loss when projecting onto the new axis. The perpendicular axes (orthogonal) are known principal components of the new subspace can be interpreted as the directions of maximum variance. The first step consists of placing the first axis in the direction of greatest variance of the points to maximize the variance along the corresponding axis. The second axis is orthogonal to it. In higher dimensions (greater than 2) the second axis could lie anywhere in the plane perpendicular to the first axis. As a constraint, the second axis always perpendicular to the first axis to maximizes the variance along the axis. The third axis would be orthogonal to the second and so forth for higher dimensions (number of dimensions equals the total number of attributes or instances of x). (The figure shown below source: Python Machine Learning)
+
+- Calculate the covariance matrix of the original coordinates of the points and diagonalize it to find the eigenvectors. These are the axes of the transformed space, sorted in order of eigenvalue—because each eigenvalue gives the variance along its axis.
+
+PCA                        | 
+:-------------------------:|
+![](PCA_Visual.png)        | 
 
 ## Questions:
 
 ####Question 1: Before doing any computations, what do you think will show up in your computations? List one or two ideas for what might show up as the first PCA dimensions, or what type of vectors will show up as ICA dimensions.
 
-- Principal component analysis transforms possibly correlated variables into a smaller number of uncorrelated variables which are referred to as principal components. The original dataset is plotted in a high dimensional space (D=5) and is represented in terms of Fresh, Milk, Grocery, etc; transforming the data into the new dimensions which is represented now by the PC's. The first PC accounts or the highest portion of the total variance or "spread" of the data. The following PC's account for the remaining variability, and usually the first couple of PC's account for roughly 90-95% of the variance. Before running any PCA, just a quick scan over the histograms (shown below), there seems to be a correlation in the number of orders among `Fresh`, `Milk`, and `Grocery`. Intuitively, the histograms show an exponential decline in the number of orders for the respected products, hence this could represent a cluster of the larger companies. In contrast to the remaining products, the histogram virtually drops off after the first two bins (lower number of orders) and perhaps indicate the smaller company purchases from the wholesale grocery distributor.
+- The original dataset is plotted in a high dimensional space (D=5) and is represented in terms of Fresh, Milk, Grocery, etc; transforming the data into the new dimensions which is represented now by the PC's. The first PC accounts or the highest portion of the total variance or "spread" of the data. The following PC's account for the remaining variability, and usually the first couple of PC's account for roughly 90-95% of the variance. Before running any PCA, just a quick scan over the histograms (shown below), there seems to be a correlation in the number of orders among `Fresh`, `Milk`, and `Grocery`. Intuitively, the histograms show an exponential decline in the number of orders for the respected products, hence this could represent a cluster of the larger companies. In contrast to the remaining products, the histogram virtually drops off after the first two bins (lower number of orders) and perhaps indicate the smaller company purchases from the wholesale grocery distributor.
 
 ![](Data.Histograms.png)  
 
@@ -52,7 +59,7 @@ df_m = pd.DataFrame(mean)
 df_mean = df_m.transpose()
 df_center = pd.DataFrame(data[columns].values - df_mean[columns].values, columns=columns)
 ```
-- Based on the No. Principal Components vs Cumulative Explained Variance Ratio plot (left), the number of dimensions would be reduced to `3`, which explains 93.4% of the variance. The plot on the right shows the greatest rate of change in the slope to be between principal components 1-3. 
+- Based on the No. Principal Components vs Cumulative Explained Variance Ratio plot (left), the number of dimensions would be reduced to `3`, which explains 93.4% of the variance. In regards to how quickly does the variance drop off, the slope shows that at PC 1-2, the slope is `-0.054` and the slope at PC 2-3 is `-0.335` (figure on right). The slope at PC 3-4 the slope begins to level out some with a slope of `-0.026`; therefore between PC 2-3 you observe the steepest slope where the explained variance ratio begins to quickly decline. 
 
 |   PC   |  Variance |  
 | ------ | --------- |    
@@ -64,7 +71,7 @@ df_center = pd.DataFrame(data[columns].values - df_mean[columns].values, columns
 
 PCA - Cumulative Variance  | PCA - Variance Ratio       |
 :-------------------------:|:-------------------------: | 
-![](PCA_Plot.png)          | ![](PCA_Plot2.png)  | 
+![](PCA_Plot.png)          | ![](PCA_Plot2.png)         | 
 
 
 #### Question 3: What do the dimensions seem to represent? How can you use this information?
