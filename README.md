@@ -26,11 +26,6 @@
 
 ## Principal Component Analysis:
 
-- [`Principal Component Analysis`](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) is an unsupervised linear transformation technique which transforms possibly correlated variables into a smaller number of uncorrelated variables which are referred to as the principal components. The objective of PCA is to identify patterns in data based on the correlation between features. PCA attempts to find the direction with the maximum variance in a high-dimensional dataset and then project it onto a new subspace with equal or fewer dimensions that the original one. 
-
-- The principal components are the underlying structure of the data and the are defined by the directions that maximizes the variance (the direction where the data is most spread out); this minimizes the information loss when projecting onto the new axis. The perpendicular axes (orthogonal) are known principal components of the new subspace can be interpreted as the directions of maximum variance. The first step consists of placing the first axis in the direction of greatest variance of the points to maximize the variance along the corresponding axis. The second axis is orthogonal to it. In higher dimensions (greater than 2) the second axis could lie anywhere in the plane perpendicular to the first axis. As a constraint, the second axis always perpendicular (orthogonal) to the first axis to maximizes the variance along the axis.(The figure shown below source: Python Machine Learning)
-
-- Calculate the covariance matrix of the original coordinates of the points and diagonalize it to find the eigenvectors. These are the axes of the transformed space, sorted in order of eigenvalue—because each eigenvalue gives the variance along its axis.
 
 ## Attributes
 
