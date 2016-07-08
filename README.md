@@ -24,9 +24,6 @@
 
 `Abreu, N. (2011). Analise do perfil do cliente Recheio e desenvolvimento de um sistema promocional. Mestrado em Marketing, ISCTE-IUL, Lisbon.`
 
-## Principal Component Analysis:
-
-
 ## Attributes
 
 - Fresh: annual spending (m.u.) on fresh products (Continuous)
